@@ -22,5 +22,37 @@ for (let i=0;i<visitors.length;i++){
   trTag.appendChild(numberTag);
   let numberText = document.createTextNode(visitors[i].number);
   numberTag.appendChild(numberText);
-  console.log(visitors[i])
-}
+};
+
+// let footerTag = document.createElement("footer");
+// let cookiesTag = document.createElement("a");
+// footerTag.appendChild(cookiesTag);
+// let cookiesText = document.createTextNode("Accept Cookies");
+// cookiesTag.appendChild(cookiesText);
+
+// let acceptCookies = document.querySelector("#cookies");
+// acceptCookies.addEventListener("click", clickHandler);
+// function clickHandler(event) {
+// acceptCookies.innerHTML = "Cookies were accepted. Would you like to revoke?"; 
+
+//   let revokeTag = document.createElement("a");
+//   acceptCookies.appendChild(revokeTag);
+//   let revokeText = document.createTextNode("revoke");
+//   revokeTag.appendChild(revokeText);
+// };
+
+// acceptCookies.addEventListener("click", clickHandler);
+// function clickHandler(event) {
+//   acceptCookies.innerHTML = "Cookies were accepted. Would you like to revoke?"; 
+  
+//   };
+
+  let toggleFuction = document.querySelector("#toggle");
+
+
+  toggleFuction.addEventListener("click", clickHandler);
+  function clickHandler(event) {
+  document.body.classList.toggle("high-contrast")
+  
+  };
+  
