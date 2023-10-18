@@ -55,4 +55,10 @@ for (let i=0;i<visitors.length;i++){
   document.body.classList.toggle("high-contrast")
   
   };
-  
+  document.addEventListener('keydown', function(event) {
+    if (event.ctrlKey && event.key === "a") {
+      toggleFuction();
+    }
+    
+  });
+    
