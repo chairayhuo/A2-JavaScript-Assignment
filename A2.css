@@ -1,8 +1,15 @@
-
-.high-contrast {
+body {
+    background-color: white;
+    color: black; 
+    padding:10px; 
+    line-height: 1;
+    letter-spacing: 1px; 
+  }
+  
+body.high-contrast {
     background-color: black;
     color: white; 
-    padding:30px; 
-    line-height: 2;
-    letter-spacing: 2px; 
+    padding:50px; 
+    line-height: 5;
+    letter-spacing: 5px; 
   }

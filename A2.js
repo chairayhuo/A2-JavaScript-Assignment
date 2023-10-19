@@ -7,6 +7,7 @@ let visitors = [
 {month:"May",number:"7076"},
 ];
 
+
 let visiorsTable = document.querySelector("#visitors");
 
 for (let i=0;i<visitors.length;i++){
@@ -24,41 +25,66 @@ for (let i=0;i<visitors.length;i++){
   numberTag.appendChild(numberText);
 };
 
-// let footerTag = document.createElement("footer");
-// let cookiesTag = document.createElement("a");
-// footerTag.appendChild(cookiesTag);
-// let cookiesText = document.createTextNode("Accept Cookies");
-// cookiesTag.appendChild(cookiesText);
+let acceptCookies = document.querySelector("#cookies");
+let cookiesFooter = document.querySelector("#footer");
 
-// let acceptCookies = document.querySelector("#cookies");
-// acceptCookies.addEventListener("click", clickHandler);
-// function clickHandler(event) {
-// acceptCookies.innerHTML = "Cookies were accepted. Would you like to revoke?"; 
+acceptCookies.addEventListener("click", acceptFunction);
+function acceptFunction(event) {
 
-//   let revokeTag = document.createElement("a");
-//   acceptCookies.appendChild(revokeTag);
-//   let revokeText = document.createTextNode("revoke");
-//   revokeTag.appendChild(revokeText);
-// };
+  event.target.remove(); 
 
-// acceptCookies.addEventListener("click", clickHandler);
-// function clickHandler(event) {
-//   acceptCookies.innerHTML = "Cookies were accepted. Would you like to revoke?"; 
-  
-//   };
+  let changecookiesTag = document.createElement("p");
+  cookiesFooter.appendChild(changecookiesTag);
+  let changecookiesText = document.createTextNode("Cookies were accepted. Would you like to revoke?");
+  changecookiesTag.appendChild(changecookiesText);
 
-  let toggleFuction = document.querySelector("#toggle");
+  let revokeTag = document.createElement("a");
+  cookiesFooter.appendChild(revokeTag);
+  let revokeText = document.createTextNode("revoke");
+  revokeTag.appendChild(revokeText);
+  revokeTag.setAttribute("href", "#");
 
+  revokeTag.addEventListener("click", revokeFunction);
+  function revokeFunction(event) {
+    event.target.remove();
+    changecookiesText.remove();
+    let changedTag = document.createElement("a");
+    cookiesFooter.appendChild(changedTag);
+    let changedText = document.createTextNode("Accept Cookies");
+    changedTag.appendChild(changedText);
+    changedTag.setAttribute("href", "#");
+    changedTag.addEventListener("click", acceptFunction);
 
-  toggleFuction.addEventListener("click", clickHandler);
-  function clickHandler(event) {
-  document.body.classList.toggle("high-contrast")
-  
-  };
-  document.addEventListener('keydown', function(event) {
-    if (event.ctrlKey && event.key === "a") {
-      toggleFuction();
+// I used the complex way of creating new elements one by one
+// I find it easier to create the whole line just through innerHTML
+// cookiesFooter.innerHTML='<a  href="#" id="changed">Accept Cookies</a>'
+// let changedCookies = document.querySelector("#changed");
+// changedCookies.addEventListener("click", acceptFunction);
+   
     }
-    
-  });
+  }
+
+
+let toggleButton = document.querySelector("#toggle");
+
+toggleButton.addEventListener("click", toggleHighContrast);
+function toggleHighContrast(){
+  document.body.classList.toggle("high-contrast");
+  
+  if (document.body.classList.contains("high-contrast")) {
+    toggleButton.innerHTML = "Low Contrast";
+  } else {
+    toggleButton.innerHTML = "High Contrast";
+  }
+};
+
+
+
+document.addEventListener('keydown', function(event) {
+  if (event.code == 'KeyA' && (event.ctrlKey || event.metaKey)) {
+    toggleHighContrast()
+  }
+});
+// need to make sure you don't have a defauly function of Ctrl A
+  
     
